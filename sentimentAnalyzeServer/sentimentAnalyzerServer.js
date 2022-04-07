@@ -78,8 +78,8 @@ app.get("/url/sentiment", (req, res) => {
     {
         "url": urlToAnalyze,
         "features": {
-            "sentiment": {
-                "document": true,
+            "keywords": {
+                "sentiment": true,
                 "limit": 1
             }
         }
@@ -88,8 +88,8 @@ app.get("/url/sentiment", (req, res) => {
     naturalLanguageUnderstanding.analyze(analyzeParams)
         .then(analysisResults => {
             //Please refer to the image to see the order of retrieval
-            console.log(JSON.stringify(analysisResults.result.sentiment.document.label))
-            return res.send(analysisResults.result.sentiment.document.label, null, 2);
+            console.log(JSON.stringify(analysisResults.result.keywords[0].sentiment))
+            return res.send(analysisResults.result.keywords[0].sentiment, null, 2);
         })
         .catch(err => {
             return res.send("Could not do desired operation " + err);
@@ -132,8 +132,8 @@ app.get("/text/sentiment", (req,res) => {
     {
         "text": textToAnalyze,
         "features": {
-            "sentiment": {
-                "document": true,
+            "keywords": {
+                "sentiment": true,
                 "limit": 1
             }
         }
@@ -142,8 +142,8 @@ app.get("/text/sentiment", (req,res) => {
     naturalLanguageUnderstanding.analyze(analyzeParams)
         .then(analysisResults => {
             //Please refer to the image to see the order of retrieval
-            console.log(JSON.stringify(analysisResults.result.sentiment.document.label))
-            return res.send(analysisResults.result.sentiment.document.label, null, 2);
+            console.log(JSON.stringify(analysisResults.result.keywords[0].sentiment))
+            return res.send(analysisResults.result.keywords[0].sentiment, null, 2);
         })
         .catch(err => {
             return res.send("Could not do desired operation " + err);

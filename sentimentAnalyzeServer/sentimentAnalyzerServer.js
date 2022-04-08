@@ -62,6 +62,7 @@ app.get("/url/emotion", (req,res) => {
      naturalLanguageUnderstanding.analyze(analyzeParams)
      .then(analysisResults => {
         //Please refer to the image to see the order of retrieval
+        console.log(JSON.stringify(analysisResults.result.keywords[0].emotion))
         return res.send(analysisResults.result.keywords[0].emotion,null,2);
      })
      .catch(err => {
@@ -117,6 +118,7 @@ app.get("/text/emotion", (req,res) => {
      naturalLanguageUnderstanding.analyze(analyzeParams)
      .then(analysisResults => {
         //Please refer to the image to see the order of retrieval
+        console.log(JSON.stringify(analysisResults.result.keywords[0].emotion))
         return res.send(analysisResults.result.keywords[0].emotion,null,2);
      })
      .catch(err => {

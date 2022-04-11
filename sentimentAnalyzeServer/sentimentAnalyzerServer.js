@@ -45,7 +45,7 @@ app.get("/",(req,res)=>{
 app.get("/url/emotion", (req,res) => {
     //Extract the url passed from the client through the request object
     let urlToAnalyze = req.query.url
-    console.log("User URL Emotion Request: "+urlToAnalyze)
+    console.log("User URL Emotion Request")
     const analyzeParams = 
         {
             "url": urlToAnalyze,
@@ -62,7 +62,6 @@ app.get("/url/emotion", (req,res) => {
      naturalLanguageUnderstanding.analyze(analyzeParams)
      .then(analysisResults => {
         //Please refer to the image to see the order of retrieval
-        console.log(JSON.stringify(analysisResults.result.keywords[0].emotion))
         return res.send(analysisResults.result.keywords[0].emotion,null,2);
      })
      .catch(err => {
@@ -74,7 +73,7 @@ app.get("/url/emotion", (req,res) => {
 app.get("/url/sentiment", (req, res) => {
     //Extract the url passed from the client through the request object
     let urlToAnalyze = req.query.url
-    console.log("User URL Sentiment Request: " + urlToAnalyze)
+    console.log("User URL Sentiment Request")
     const analyzeParams =
     {
         "url": urlToAnalyze,
@@ -89,7 +88,6 @@ app.get("/url/sentiment", (req, res) => {
     naturalLanguageUnderstanding.analyze(analyzeParams)
         .then(analysisResults => {
             //Please refer to the image to see the order of retrieval
-            console.log(JSON.stringify(analysisResults.result.keywords[0].sentiment))
             return res.send(analysisResults.result.keywords[0].sentiment, null, 2);
         })
         .catch(err => {
@@ -101,7 +99,7 @@ app.get("/url/sentiment", (req, res) => {
 app.get("/text/emotion", (req,res) => {
     //Extract the url passed from the client through the request object
     let textToAnalyze = req.query.text
-    console.log("User Text Emotion Request: "+textToAnalyze)
+    console.log("User Text Emotion Request")
     const analyzeParams = 
         {
             "text": textToAnalyze,
@@ -118,7 +116,6 @@ app.get("/text/emotion", (req,res) => {
      naturalLanguageUnderstanding.analyze(analyzeParams)
      .then(analysisResults => {
         //Please refer to the image to see the order of retrieval
-        console.log(JSON.stringify(analysisResults.result.keywords[0].emotion))
         return res.send(analysisResults.result.keywords[0].emotion,null,2);
      })
      .catch(err => {
@@ -129,7 +126,7 @@ app.get("/text/emotion", (req,res) => {
 app.get("/text/sentiment", (req,res) => {
     //Extract the url passed from the client through the request object
     let textToAnalyze = req.query.text
-    console.log("User TEXT Sentiment Request: " + textToAnalyze)
+    console.log("User Text Sentiment Request")
     const analyzeParams =
     {
         "text": textToAnalyze,
@@ -144,7 +141,6 @@ app.get("/text/sentiment", (req,res) => {
     naturalLanguageUnderstanding.analyze(analyzeParams)
         .then(analysisResults => {
             //Please refer to the image to see the order of retrieval
-            console.log(JSON.stringify(analysisResults.result.keywords[0].sentiment))
             return res.send(analysisResults.result.keywords[0].sentiment, null, 2);
         })
         .catch(err => {
